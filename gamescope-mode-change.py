@@ -5,6 +5,7 @@ import os
 
 # Change path so we find Xlib
 sys.path.append(os.path.join(os.path.dirname(__file__), 'third-party/python-xlib'))
+sys.path.append(os.path.join(os.path.dirname(__file__), 'third-party/six'))
 
 atomName = "GAMESCOPE_XWAYLAND_MODE_CONTROL"
 
@@ -42,9 +43,6 @@ if atom == X.NONE:
   sys.stderr.write('xwayland:  no atom named "%s" on server "%s"\n'%(atomName, d.get_display_name()))
   sys.exit(1)
 
-print(d.screen().root.id)
-
-
 def _sendModeChanged(disp : display.Display, atom : int, win : drawable.Window):
   event_ = event.PropertyNotify(
     window = win.id,
@@ -58,7 +56,6 @@ def _sendModeChanged(disp : display.Display, atom : int, win : drawable.Window):
   disp.flush()
 
 def _changeMode(disp : display.Display, atom : int, win : drawable.Window, width : int, height : int, serverID = 1, superRes = 1):
-  print(f"changeMode({win.id})")
   win.change_property(atom, Xatom.CARDINAL, 32, [serverID, width, height, superRes])
 
 def x11(disp : display.Display, func, *args):
