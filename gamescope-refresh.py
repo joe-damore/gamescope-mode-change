@@ -5,6 +5,7 @@ import os
 
 # Change path so we find Xlib
 sys.path.append(os.path.join(os.path.dirname(__file__), 'third-party/python-xlib'))
+sys.path.append(os.path.join(os.path.dirname(__file__), 'third-party/six'))
 
 from optparse import OptionParser
 from Xlib import display, Xatom, X
