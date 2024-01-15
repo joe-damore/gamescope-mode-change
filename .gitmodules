@@ -1,3 +1,6 @@
 [submodule "third-party/python-xlib"]
 	path = third-party/python-xlib
 	url = https://github.com/python-xlib/python-xlib.git
+[submodule "third-party/six"]
+	path = third-party/six
+	url = https://github.com/benjaminp/six
